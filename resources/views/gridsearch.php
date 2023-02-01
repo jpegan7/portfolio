@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Jack's Site - Pathfinder</title>
-    <link rel="stylesheet" type="text/css" href="{{ url('/css/path.css') }}" />
+    <link rel="stylesheet" type="text/css" href="/css/path.css" />
   </head>
   
   <body id = "b">
@@ -36,7 +36,7 @@
     # of Cells Visited: 
     <strong id="totalCells"></strong>
     
-    <script type="text/javascript" src="{{ URL::asset('js/grid.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/pathScript.js') }}"></script>
+    <script type="text/javascript" src="js/grid.js"></script>
+    <script type="text/javascript" src="js/pathScript.js"></script>
   </body>
 </html>
