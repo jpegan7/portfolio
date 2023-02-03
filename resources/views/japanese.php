@@ -66,20 +66,20 @@
         
         <a href="/japanese" id="back_button"> <img id="back_button_image" src="images/left_arrow.png" alt="back" style="background-color: transparent;"/></a>
 
-        <h1>0/46</h1>
+        <h1 id="counter">1/71</h1>
         <div class="card" id="study_card">
-            <div class="card-body" id="study_card_body">あ</div>
+            <div class="card-body" id="study_card_body"></div>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col"><button class="btn btn-light guess" id="guess1">a</button></div>
-                <div class="col"><button class="btn btn-light guess" id="guess2">b</button></div>
-                <div class="col"><button class="btn btn-light guess" id="guess3">c</button></div>
+            <div class="row align-items-center">
+                <div class="col"><button class="btn btn-light guess" class="guess" id="guess1"></button></div>
+                <div class="col"><button class="btn btn-light guess" class="guess" id="guess2"></button></div>
+                <div class="col"><button class="btn btn-light guess" class="guess" id="guess3"></button></div>
             </div>
-            <div class="row">
-                <div class="col"><button class="btn btn-light guess" id="guess4">d</button></div>
-                <div class="col"><button class="btn btn-light guess" id="guess5">e</button></div>
-                <div class="col"><button class="btn btn-light guess" id="guess6">f</button></div>
+            <div class="row align-items-center">
+                <div class="col"><button class="btn btn-light guess" class="guess" id="guess4"></button></div>
+                <div class="col"><button class="btn btn-light guess" class="guess" id="guess5"></button></div>
+                <div class="col"><button class="btn btn-light guess" class="guess" id="guess6"></button></div>
             </div>
         </div>
     </div>

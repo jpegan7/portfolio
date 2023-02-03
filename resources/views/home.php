@@ -15,7 +15,7 @@
 </head>
 
 <body class="default-body">
-<a href="/" class="home_button"> <img class="home_button_image" src="images/home1.png" alt="home" style="background-color: transparent;"/></a>
+
 
     <div class="container">
         <h1>Welcome to my website!</h1>
