@@ -1,4 +1,5 @@
-let mainContainer = document.getElementById("main_container");
+let optionsMainContainer = document.getElementById("options_main_container");
+let studyMainContainer = document.getElementById("study_main_container");
 let fadeStep = 0.05;
 let fadeInterval = 12;
 
@@ -52,7 +53,7 @@ async function unfade(htmlElement, fadeTime){
 
 //Generates the study screen //TODO
 function generateStudyScreenHTML(){
-    mainContainer.innerHTML = "";
+    optionMainContainer.innerHTML = "";
     //TODO  "Go Back" arrow to return to option select
 
     //TODO big main card container -> this is the symbol the user is studying
@@ -61,13 +62,15 @@ function generateStudyScreenHTML(){
     
     //TODO text box (manual typing option)
     
-
 }
 
 //Logic of the study game
 function study(){
 
 }
+
+
+
 
 //Update which script is selected
 document.querySelectorAll('input[name="script_select"]').forEach((elem) => {
@@ -98,11 +101,16 @@ document.getElementById("study").addEventListener("click", async function(){
     
    // let studyHTML = generateStudyScreenHTML();
     //fadeToNewHTML(mainContainer,studyHTML,0.1);
-    await fade(mainContainer, 1);
-    //set mainContainer to hidden
-    mainContainer.innerHTML = "UHHHHHHHH I THINK SOO";
-    await unfade(mainContainer, 10);
+    await fade(optionsMainContainer, 1);
 
+    //set mainContainer to hidden
+    optionsMainContainer.style.display = "none";
+    studyMainContainer.style.display = "block";
+
+    await unfade(studyMainContainer, 1);
+
+
+    //mainContainer.style.display = "initial";
 
 });
 

@@ -11,12 +11,16 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/japanese.css">
 
 
 </head>
 
 <body class="default-body">
-    <div class="container" id="main_container">
+    
+    <a href="/" class="home_button"> <img class="home_button_image" src="images/home1.png" alt="home" style="background-color: transparent;"/></a>
+    
+    <div class="container" id="options_main_container">
         <div class="container" id="script_option" value="Hiragana">
             <p>Select which script you want to study</p>
             <div class="form-check form-check-inline">
@@ -55,6 +59,28 @@
 
         <div class="container">
             <button id="study" class="btn btn-primary btn-lg">Study</button>
+        </div>
+    </div>
+
+    <div class="container" id="study_main_container" style="opacity:0;display:none;">
+        
+        <a href="/japanese" id="back_button"> <img id="back_button_image" src="images/left_arrow.png" alt="back" style="background-color: transparent;"/></a>
+
+        <h1>0/46</h1>
+        <div class="card" id="study_card">
+            <div class="card-body" id="study_card_body">あ</div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col"><button class="btn btn-light guess" id="guess1">a</button></div>
+                <div class="col"><button class="btn btn-light guess" id="guess2">b</button></div>
+                <div class="col"><button class="btn btn-light guess" id="guess3">c</button></div>
+            </div>
+            <div class="row">
+                <div class="col"><button class="btn btn-light guess" id="guess4">d</button></div>
+                <div class="col"><button class="btn btn-light guess" id="guess5">e</button></div>
+                <div class="col"><button class="btn btn-light guess" id="guess6">f</button></div>
+            </div>
         </div>
     </div>
 

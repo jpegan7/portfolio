@@ -7,4 +7,13 @@ body {
     text-align: center;
 }
 
+.home_button{
+    position: absolute;
+    top:10px;
+    left:10px;
+}
 
+.home_button_image{
+    width:30px;
+    height:30px;
+}
