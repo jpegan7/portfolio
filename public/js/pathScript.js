@@ -17,8 +17,8 @@ const CELL_WIDTH = Math.floor(canvas.width / NUM_COLUMNS);
 const CELL_HEIGHT = Math.floor(canvas.height / NUM_ROWS);
 
 //Re-size canvas to fit with grid - might wanna remove if grid display is reconfigured
-canvas.width = NUM_COLUMNS*CELL_WIDTH;
-canvas.height = NUM_ROWS*CELL_HEIGHT;
+//canvas.width = NUM_COLUMNS*CELL_WIDTH;
+//canvas.height = NUM_ROWS*CELL_HEIGHT;
 
 const MOUSE_X_OFFSET = (window.innerWidth - canvas.width) / 2;
 const MOUSE_Y_OFFSET = margin;//(window.innerHeight - canvas.height) / 2;
@@ -86,10 +86,10 @@ let diagonal = false;
 
 var slider = document.getElementById("animationSlider");
 var animationSpeed = document.getElementById("animationSpeed");
-animationSpeed.innerHTML = slider.value; 
+animationSpeed.innerHTML = "Animation Delay: " + slider.value; 
 
 slider.oninput = function() {
-  animationSpeed.innerHTML = this.value;
+  animationSpeed.innerHTML = "Animation Delay: " + this.value;
 }
 
 window.addEventListener('mousedown', mouseDown);

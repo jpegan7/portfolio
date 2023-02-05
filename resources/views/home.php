@@ -19,10 +19,12 @@
 
     <div class="container" style="    position: absolute;top: 45%;left: 50%;transform: translate(-50%, -50%);">
         <h1>Welcome to my website!</h1>
-        <div class="links">
-            <a href="/gridsearch">Grid Search</a>
-            <br>
+        <h3>Check out one of my projects:</h3>
+        <div class="links" style="margin-top:20px;">
+            
             <a href="/japanese">Learn Japanese</a>
+            <br/>
+            <a href="/gridsearch">Grid Search</a>
 
         </div>
     </div>

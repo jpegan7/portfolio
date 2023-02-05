@@ -1,6 +1,4 @@
 
-
-
 canvas{
     border: 2px solid black;
     position:relative;
@@ -14,7 +12,7 @@ canvas{
 
 body{
     margin: 10;
-    background-color: aquamarine;
+    background-color: rgb(104, 215, 255);
 }
 
 #algorithms{
@@ -26,8 +24,25 @@ body{
 
 #animationSlider{
     position: relative;
+    transform: translate(-60px,30px);
 }
 
+#animationSpeed{
+    position: absolute;
+    transform: translate(-60px,30px);
+}
+
+#diag{
+    width: 10px;
+    margin-left: 20px;
+    transform: translate(0px,4px);
+}
+
+#diagLabel{
+    position: relative;
+    padding-left: 0px;
+    /*transform: translate(-300px, 0px);*/
+}
 
 .under{
     width: 100px;

@@ -260,28 +260,40 @@ document.querySelectorAll(".guess").forEach((btn) => {
 });
 
 
+function updateTextStudyBoard(textBox){
+
+    if(textBox.value.toLowerCase() == romanji[currentCharacterIndex]){    //Correct
+        count++;
+        if(count<studyScript.length){
+            currentCharacterIndex = studyOrder.pop();
+            mainCardElem.innerHTML = studyScript[currentCharacterIndex];
+            counterElem.innerHTML = count + "/" + studyScript.length;
+            
+        }else{   //End of study session
+            studyMainContainer.style.display = "none";
+            winMainContainer.style.display = "block";
+        }
+
+    }else{  //Incorrect
+
+    }
+
+    textBox.value='';
+    
+}
+
 //  Handle guess text box
 document.getElementById("guess_text_box").addEventListener("keydown", function(event){
     if(event.key=="Enter"){ 
+        updateTextStudyBoard(this, );
         
-        if(this.value == romanji[currentCharacterIndex]){    //Correct
-            count++;
-            if(count<studyScript.length){
-                currentCharacterIndex = studyOrder.pop();
-                mainCardElem.innerHTML = studyScript[currentCharacterIndex];
-                counterElem.innerHTML = count + "/" + studyScript.length;
-                
-            }else{   //End of study session
-                studyMainContainer.style.display = "none";
-                winMainContainer.style.display = "block";
-            }
-
-        }else{  //Incorrect
-
-        }
-
-        this.value='';
     }
-})
+});
+
+
+document.getElementById("enter_button").addEventListener("click", function(){
+    updateTextStudyBoard(document.getElementById("guess_text_box"));
+
+});
 
 

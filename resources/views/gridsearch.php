@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width">
     <title>Jack's Site - Pathfinder</title>
     <link rel="stylesheet" type="text/css" href="/css/path.css" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   </head>
   
   <body id = "b">
+
+  <a href="/" class="home_button"> <img class="home_button_image" src="images/home1.png" alt="home"
+            style="background-color: transparent;" /></a>
+
     <canvas id="window"></canvas>
     <select id="algorithms">
         <option value="bfs">BFS</option>
@@ -16,13 +21,13 @@
     </select>
     
     <input type="range" min="1" max="100" value="10"  id="animationSlider">
-    Animation Delay:
-    <strong id="animationSpeed"> </strong>
+    
+    <label id="animationSpeed" for="animationSlider">Animation Delay:</label>
 
     <div id = "under">
-        <input type="button" id="node" class="under" value="Place Node">
+        <input type="button" id="node" class="under" value="Place Start">
         <input type="button" id="wall" class="under" value="Place Wall">
-        <input type="button" id="flag" class="under" value="Place Flag">
+        <input type="button" id="flag" class="under" value="Place Goal">
         <input type="button" id="start" class="under" value="Start Search">
         <input type="button" id="clear" class="under" value="Clear Search">
         <input type="button" id="reset" class="under" value="Reset">
