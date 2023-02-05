@@ -1,18 +1,17 @@
 //  Relevant elements to manipulate
 let optionsMainContainer = document.getElementById("options_main_container");
 let studyMainContainer = document.getElementById("study_main_container");
+let winMainContainer = document.getElementById("win_main_container");
 let mainCardElem = document.getElementById("study_card_body");
+let guessesContainer = document.getElementById("guesses_container");
 let guessesElems = [document.getElementById("guess1"), document.getElementById("guess2"), document.getElementById("guess3"), document.getElementById("guess4"), document.getElementById("guess5"), document.getElementById("guess6")];
+let textBoxContainer = document.getElementById("text_box_container");
 let counterElem = document.getElementById("counter");
-
-//  Fade options
-let fadeStep = 0.05;
-let fadeInterval = 12;
 
 //  Character sets
 let hiragana = ['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に','ぬ','ね','の','は','ひ','ふ','へ','ほ','ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん','が','ぎ','ぐ','げ','ご','ざ','じ','ず','ぜ','ぞ','だ','ぢ','づ','で','ど','ば','び','ぶ','べ','ぼ','ぱ','ぴ','ぷ','ぺ','ぽ'];
 let katakana = ['ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ','サ','シ','ス','セ','ソ','タ','チ','ツ','テ','ト','ナ','ニ','ヌ','ネ','ノ','ハ','ヒ','フ','ヘ','ホ','マ','ミ','ム','メ','モ','ヤ','ユ','ヨ','ラ','リ','ル','レ','ロ','ワ','ヲ','ン','ガ','ギ','グ','ゲ','ゴ','ザ','ジ','ズ','ゼ','ゾ','ダ','ヂ','ヅ','デ','ド','バ','ビ','ブ','ベ','ボ','パ','ピ','プ','ペ','ポ'];
-let romanji = ['a','i','u','e','o','ka','ki','ku','ke','ko','sa','shi','su','se','so','ta','chi','tsu','te','to','na','ni','nu','ne','no','ha','hi','fu','he','ho','ma','mi','mu','me','mo','ya','yu','yo','ra','ri','ru','re','ro','wa','wo','n','ga','gi','gu','ge','go','za','ji','zu','ze','zo','da','ji','dzu','de','do','ba','bi','bu','be','bo','pa','pi','pu','pe','po'];
+let romanji = ['a','i','u','e','o','ka','ki','ku','ke','ko','sa','shi','su','se','so','ta','chi','tsu','te','to','na','ni','nu','ne','no','ha','hi','fu','he','ho','ma','mi','mu','me','mo','ya','yu','yo','ra','ri','ru','re','ro','wa','wo','n','ga','gi','gu','ge','go','za','ji','zu','ze','zo','da','di','dzu','de','do','ba','bi','bu','be','bo','pa','pi','pu','pe','po'];
 
 //  Variables to keep track of the random order we will study the characters
 let studyOrder;
@@ -25,7 +24,10 @@ let guessScript = romanji;  //script to show on guess buttons
 let studyStyle = "Romanji"; 
 
 //  Study counter
-let count = 1;
+let count;
+
+// Fade speed option
+let fadeSpeed = 0.3;
 
 
 // Sleep for 'ms' microseconds
@@ -90,7 +92,7 @@ function shuffle(array) {
 
 
 
-function setStudyBoard(studyCharacterSet, guessCharacterSet, newCharacterIndex, mainCard, guesses){
+function setButtonStudyBoard(studyCharacterSet, guessCharacterSet, newCharacterIndex, mainCard, guesses){
     //Set main card to new character
     mainCard.innerHTML = studyCharacterSet[newCharacterIndex];
 
@@ -124,6 +126,8 @@ function setStudyBoard(studyCharacterSet, guessCharacterSet, newCharacterIndex, 
     }
 }
 
+
+
 //Update which script is selected
 document.querySelectorAll('input[name="script_select"]').forEach((elem) => {
     elem.addEventListener("change", function(event) {
@@ -139,8 +143,13 @@ document.querySelectorAll('input[name="script_select"]').forEach((elem) => {
             oppositeScript = hiragana;
         }
 
+        if(studyStyle == "Japanese"){
+            guessScript = oppositeScript;
+        }
+
     });
 });
+
 
 //Update which study type is selected
 document.querySelectorAll('input[name="study_select"]').forEach((elem) => {
@@ -156,12 +165,13 @@ document.querySelectorAll('input[name="study_select"]').forEach((elem) => {
     });
 });
 
+
 //  Start game if user presses "Study" button
 document.getElementById("study").addEventListener("click", async function(){
     
-   // let studyHTML = generateStudyScreenHTML();
+    //let studyHTML = generateStudyScreenHTML();
     //fadeToNewHTML(mainContainer,studyHTML,0.1);
-    await fade(optionsMainContainer, 1);
+    await fade(optionsMainContainer, fadeSpeed);
 
     //set mainContainer to hidden
     optionsMainContainer.style.display = "none";
@@ -176,15 +186,50 @@ document.getElementById("study").addEventListener("click", async function(){
 
     if(studyStyle == "Type"){
         //TODO
+        textBoxContainer.style.display = "block";
+        guessesContainer.style.display = "none";
+        document.getElementById("back_button_study_text").style.display = "block";
+        document.getElementById("back_button_study_buttons").style.display = "none";
+        mainCardElem.innerHTML = studyScript[currentCharacterIndex];
+        
     }else{
-        setStudyBoard(studyScript, guessScript, currentCharacterIndex, mainCardElem, guessesElems);
+
+        guessesContainer.style.display = "block";
+        textBoxContainer.style.display = "none";
+        document.getElementById("back_button_study_buttons").style.display = "block";
+        document.getElementById("back_button_study_text").style.display = "none";
+        setButtonStudyBoard(studyScript, guessScript, currentCharacterIndex, mainCardElem, guessesElems);
     }
     
+    count = 0;
+    counterElem.innerHTML = count + "/" + studyScript.length;
 
     studyMainContainer.style.display = "block";
 
-    await unfade(studyMainContainer, 1);
+    await unfade(studyMainContainer, fadeSpeed);
     //mainContainer.style.display = "initial";
+});
+
+
+//  Handle back buttons
+document.querySelectorAll(".back_button").forEach((back_btn) => {
+    back_btn.addEventListener("click", async function(){
+
+        let container;
+        if(back_btn.id == "back_button_study_buttons" || back_btn.id == "back_button_study_text"){
+            container = studyMainContainer;
+        }else if(back_btn.id == "back_button_win"){
+            container = winMainContainer;
+        }
+
+        await fade(container, fadeSpeed);
+        
+        container.style.display = "none";
+        optionsMainContainer.style.display = "block";
+
+        await unfade(optionsMainContainer, fadeSpeed);
+
+    });
 });
 
 
@@ -194,9 +239,16 @@ document.querySelectorAll(".guess").forEach((btn) => {
         let guessIndex = guessScript.indexOf(btn.innerHTML);
 
         if(guessIndex == currentCharacterIndex){    //Correct guess!
-            currentCharacterIndex = studyOrder.pop();
-            setStudyBoard(studyScript, guessScript, currentCharacterIndex, mainCardElem, guessesElems);
-            counterElem.innerHTML = count++ + "/" + studyScript.length;
+            count++;
+            if(count<studyScript.length){
+                currentCharacterIndex = studyOrder.pop();
+                setButtonStudyBoard(studyScript, guessScript, currentCharacterIndex, mainCardElem, guessesElems);
+                counterElem.innerHTML = count + "/" + studyScript.length;
+            }else{  //End of study session
+                studyMainContainer.style.display = "none";
+                winMainContainer.style.display = "block";
+
+            }
 
         }else{  //Incorrect...
             
@@ -206,5 +258,30 @@ document.querySelectorAll(".guess").forEach((btn) => {
 
     });
 });
+
+
+//  Handle guess text box
+document.getElementById("guess_text_box").addEventListener("keydown", function(event){
+    if(event.key=="Enter"){ 
+        
+        if(this.value == romanji[currentCharacterIndex]){    //Correct
+            count++;
+            if(count<studyScript.length){
+                currentCharacterIndex = studyOrder.pop();
+                mainCardElem.innerHTML = studyScript[currentCharacterIndex];
+                counterElem.innerHTML = count + "/" + studyScript.length;
+                
+            }else{   //End of study session
+                studyMainContainer.style.display = "none";
+                winMainContainer.style.display = "block";
+            }
+
+        }else{  //Incorrect
+
+        }
+
+        this.value='';
+    }
+})
 
 
