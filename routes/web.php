@@ -24,3 +24,7 @@ Route::get('/gridsearch', function () {
 Route::get('/japanese', function () {
     return view('japanese');
 });
+
+Route::get('/weather', function () {
+    return view('weather');
+});

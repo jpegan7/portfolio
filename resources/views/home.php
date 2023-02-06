@@ -20,11 +20,13 @@
     <div class="container" style="    position: absolute;top: 45%;left: 50%;transform: translate(-50%, -50%);">
         <h1>Welcome to my website!</h1>
         <h3>Check out one of my projects:</h3>
-        <div class="links" style="margin-top:20px;">
+        <div class="links" style="margin-top:20px;text-decoration:none;">
             
-            <a href="/japanese">Learn Japanese</a>
+            <a href="/japanese" style="text-decoration:none;">Learn Japanese</a>
             <br/>
-            <a href="/gridsearch">Grid Search</a>
+            <a href="/gridsearch" style="text-decoration:none;">Grid Search</a>
+            <br/>
+            <a href="/weather" style="text-decoration:none;">Weather Forecast</a>
 
         </div>
     </div>
