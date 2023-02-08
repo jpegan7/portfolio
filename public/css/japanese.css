@@ -94,6 +94,7 @@
     height: 100%;
     padding: 1em;
     border: 1px solid black;
+    
 }
 
 #guess_text_box{
@@ -124,4 +125,50 @@
     /*border-radius: 7px;*/
 }
 
+
+
+@keyframes incorrect-button{
+    0%{
+        transform: translateX(5px);
+        background-color: rgb(239, 35, 35);
+    }
+
+    25%{
+        transform: translateX(-5px);
+    }
+
+    50%{
+        transform: translateX(5px);
+    }
+
+    75%{
+        transform: translateX(-5px);
+    }
+
+}
+
+@keyframes correct-button {
+    0%{
+        background-color: green;
+    }
+}
+
+@keyframes incorrect-text {
+    0%{
+        transform: translateX(5px);
+    }
+
+    25%{
+        transform: translateX(-5px);
+    }
+
+    50%{
+        transform: translateX(5px);
+    }
+
+    75%{
+        transform: translateX(-5px);
+    }
+    
+}
 

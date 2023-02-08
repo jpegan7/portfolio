@@ -236,9 +236,13 @@ document.querySelectorAll(".back_button").forEach((back_btn) => {
 //  Handle guess buttons
 document.querySelectorAll(".guess").forEach((btn) => {
     btn.addEventListener("click", function(){  
+
         let guessIndex = guessScript.indexOf(btn.innerHTML);
 
         if(guessIndex == currentCharacterIndex){    //Correct guess!
+
+            //btn.style.animation="correct-button 0.3s";
+
             count++;
             if(count<studyScript.length){
                 currentCharacterIndex = studyOrder.pop();
@@ -251,12 +255,13 @@ document.querySelectorAll(".guess").forEach((btn) => {
             }
 
         }else{  //Incorrect...
+            btn.style.animation="incorrect-button 0.3s";
             
         }
-
-        
-
     });
+    btn.addEventListener("animationend", function() {
+        btn.style.animation = "";
+      });
 });
 
 
@@ -275,7 +280,7 @@ function updateTextStudyBoard(textBox){
         }
 
     }else{  //Incorrect
-
+        textBox.style.animation = "incorrect-text 0.3s";
     }
 
     textBox.value='';
@@ -285,10 +290,14 @@ function updateTextStudyBoard(textBox){
 //  Handle guess text box
 document.getElementById("guess_text_box").addEventListener("keydown", function(event){
     if(event.key=="Enter"){ 
-        updateTextStudyBoard(this, );
+        updateTextStudyBoard(this);
         
     }
 });
+
+document.getElementById("guess_text_box").addEventListener("animationend", function() {
+    this.style.animation = "";
+  });
 
 
 document.getElementById("enter_button").addEventListener("click", function(){
