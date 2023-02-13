@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,26 @@ Route::get('/japanese', function () {
 Route::get('/weather', function () {
     return view('weather');
 });
+
+Route::get('/srs-social', function () {
+    return view('srs_social/srs_home');
+});
+
+Route::get('/srs-social/create-deck', function () {
+    return view('srs_social/create_deck');
+});
+
+Route::get('/srs-social/login', function () {
+    return view('srs_social/login');
+});
+
+// Register user
+Route::get('/srs-social/register', [UserController::class, 'create']);
+Route::post('/srs-social/register', [UserController::class, 'store']);
+
+// Logout
+Route::post('/srs-social/logout', [UserController::class, 'logout']);
+
+// Login
+Route::get('/srs-social/login', [UserController::class, 'login']);
+Route::post('/srs-social/login', [UserController::class, 'authenticate']);
